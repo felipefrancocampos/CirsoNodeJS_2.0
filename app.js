@@ -1,17 +1,12 @@
 var app = require('./config/server')
 
-app.get('/', function(req, res){
-    res.render("home/index")
-})
+var rotaNoticias = require('./app/routes/noticias')(app)
 
-app.get('/formulario_inclusao_noticias', function(req, res){
-    res.send("admin/form_add_noticias")
-})
+var rotaHome = require('./app/routes/home')(app)
 
-app.get('/noticias', function(req, res){
-    res.send("noticias/noticias")
-})
+var rotaFormInclusaoNoticia = require('./app/routes/formulario_inclusao_noticias')(app)
+
 
 app.listen(3000, function(){
-    console.log(msg())
-})
+    console.log('Servidor ON')
+}) 
