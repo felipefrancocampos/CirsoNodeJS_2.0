@@ -1,6 +1,4 @@
-
-
 module.exports = function(){
-    var msg = 'Este módulo contém apenas uma string'
+    var msg = 'Este modulo contem apenas uma string'
     return msg
 }
