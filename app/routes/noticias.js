@@ -1,11 +1,13 @@
-module.exports = function(app) {
+const { application } = require("express")
 
-    app.get('/noticias', function(req, res){
+module.exports = function(application) {
 
-        var connection = app.config.dbConnection()
-        var noticiasModel = app.app.models.noticiasModel
+    application.get('/noticias', function(req, res){
 
-        noticiasModel.getNoticias(connection, function(error, result){
+        var connection = application.config.dbConnection()
+        var noticiasModel = new application.app.models.NoticiasDAO(connection)
+
+        noticiasModel.getNoticias(function(error, result){
             res.render("noticias/noticias", {noticias : result})
         })
     })
