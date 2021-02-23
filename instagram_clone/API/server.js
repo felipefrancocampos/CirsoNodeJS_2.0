@@ -12,9 +12,24 @@ var porta = 8080;
 
 app.listen(porta);
 
+var db = new mongodb.Db(
+    'instagram',
+    new mongodb.Server('localhost', 27017, {}),
+    {}
+);
+
 console.log('Servidor HTTP esta escutando a porta' + porta);
 
 app.get('/', function(req, res){
 
     res.send({msg:'Olá'});
-})
+});
+
+app.post('/api', function(req, res){
+
+    var dados = req.body;
+
+    db.prependOnceListener(function(err, mongoclient){
+        mongoclient.collection('postagens, function')
+    })
+});
